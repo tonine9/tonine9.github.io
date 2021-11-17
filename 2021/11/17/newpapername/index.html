@@ -4,8 +4,14 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="newpapername, 小九的学习日记">
-    <meta name="description" content="试探的">
+    <meta name="keywords" content="fuzz, 小九的学习日记">
+    <meta name="description" content="fuzz测试Fuzz测试就是通过构造不规则的输入，从而触发程序的某种bug常规的漏洞挖掘包括三种：
+
+白盒代码审计
+灰盒逆向工程
+黑盒测试Fuzz属于黑盒测试Fuzz测试也叫做模糊测试通过输入非法字段，并观察软件是否异常来实现
+
+一方面可以">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -17,7 +23,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>newpapername | 小九的学习日记</title>
+    <title>fuzz | 小九的学习日记</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
@@ -309,12 +315,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/1.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/7.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">newpapername</h1>
+                    <h1 class="description center-align post-title">fuzz</h1>
                 </div>
             </div>
         </div>
@@ -463,7 +469,23 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h3 id="试探的"><a href="#试探的" class="headerlink" title="试探的"></a>试探的</h3>
+                <h3 id="fuzz测试"><a href="#fuzz测试" class="headerlink" title="fuzz测试"></a>fuzz测试</h3><p>Fuzz测试就是通过构造不规则的输入，从而触发程序的某种bug<br>常规的漏洞挖掘包括三种：</p>
+<ol>
+<li>白盒代码审计</li>
+<li>灰盒逆向工程</li>
+<li>黑盒测试<br>Fuzz属于黑盒测试<br>Fuzz测试也叫做模糊测试<br>通过输入非法字段，并观察软件是否异常来实现</li>
+</ol>
+<p>一方面可以向软件输入非法字段，也可以通过像网络服务发送异常报文<br>在发送了异常的报文之后，如果没有收到回复，那就推断这个服务可能存在bug。</p>
+<p>测试的对象是一个FTP服务器，利用网络报文来进行测试</p>
+<h2 id="使用lftp登录ftp服务器之后，可以使用put指令将文件上传到服务器。"><a href="#使用lftp登录ftp服务器之后，可以使用put指令将文件上传到服务器。" class="headerlink" title="使用lftp登录ftp服务器之后，可以使用put指令将文件上传到服务器。"></a>使用lftp登录ftp服务器之后，可以使用put指令将文件上传到服务器。</h2><h3 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h3><pre><code>  put [-E]  [-a]  [-c] [-O base]  lfile  [-o rfile]
+</code></pre>
+<p>-o    指定输出文件的名字，不指定则使用原来的名字<br>-c    如果失败，持续获取<br>-E    获取之后，删除源文件<br>-a    使用ascii模式<br>-O    指定输出文件存放的目录</p>
+<h3 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h3><ul>
+<li>输入超长的ftp用户名，被测设备应该表现正常</li>
+<li>正常登录ftp后，对于ftp命令“mdelete、cd、mkdir、cwd、mdir、mput、rename”输入超长参数，被测设备应该表现正常</li>
+<li>根据测试设计相应的测试脚本，测试脚本使用python语言编写，脚本主要由三个函数组成<br>m get_fuzz_str()函数 用于生成fuzz str 即异常报文的关键部分，在本例中用于生成超长字符串‘aaaaaaaa……‘<br>m fuzz_FTP_usr()函数，用于发送超长的用户名 将超长的字符串4串拼接在一起，作为user的参数发送给服务器。<br>m fuzz_FTP_cmd()函数，用于发送超长的命令，对每一个命令构造异常的参数，然后发送给服务器。<br>如果被测设备表现正常没有发现问题<br>则有安全漏洞。</li>
+</ul>
+
                 
             </div>
             <hr/>
@@ -705,9 +727,9 @@
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="newpapername">
+                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="fuzz">
                         
-                        <span class="card-title">newpapername</span>
+                        <span class="card-title">fuzz</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
