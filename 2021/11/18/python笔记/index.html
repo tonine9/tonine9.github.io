@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="python笔记, 小九的学习日记">
+    <meta name="keywords" content="python笔记, tonine">
     <meta name="description" content="列表（list）列表（list）使用中括号可以放数字、字符串类型，*
 
 pop（）删除元素
@@ -26,7 +26,7 @@ append（）添加元素 默认加在末尾 倒序用-n
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>python笔记 | 小九的学习日记</title>
+    <title>python笔记 | tonine</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
@@ -53,7 +53,7 @@ append（）添加元素 默认加在末尾 倒序用-n
                     
                     <img src="/medias/logo.png" class="logo-img" alt="LOGO">
                     
-                    <span class="logo-span">小九的学习日记</span>
+                    <span class="logo-span">tonine</span>
                 </a>
             </div>
             
@@ -152,7 +152,7 @@ append（）添加元素 默认加在末尾 倒序用-n
         
         <img src="/medias/logo.png" class="logo-img circle responsive-img">
         
-        <div class="logo-name">小九的学习日记</div>
+        <div class="logo-name">tonine</div>
         <div class="logo-desc">
             
             Never really desperate, only the lost of the soul.
@@ -483,13 +483,30 @@ append（）添加元素 默认加在末尾 倒序用-n
 <li>append（）添加元素 默认加在末尾 倒序用-n</li>
 <li>替换l.[0]=‘bob’ 就是将第1个元素替换为bob</li>
 <li>extend将元素追加到尾部<br>例 l=[5,4,3]<br>l.extend=[1,2,3]<br>print(l)<br>则输出<br>【5，4，3，1，2，3】</li>
-<li>Remove（n）删除首次出现n时的元素</li>
+<li>Remove（n）删除首次出现n时的元素<br>len（list） 列表元素个数<br>max（list） 列表最大值<br>min（list） 列表最小值</li>
 </ol>
 <h3 id="元组（tuple）"><a href="#元组（tuple）" class="headerlink" title="元组（tuple）"></a>元组（tuple）</h3><p>用小括号将元素括起来<br>只定义有一个元素的tuple元素要跟逗号<br>元组tuble 是固定的，每一个元素都不能被改变</p>
 <ol>
 <li>count（）统计某个元素出现的次数<br>对于不存在的元素 count会返回0，不会报错</li>
 <li>index（n）返回指定值n的第一次出现的下标<br>指定元素不存在时会报错</li>
 </ol>
+<h3 id="字典（dict）"><a href="#字典（dict）" class="headerlink" title="字典（dict）"></a>字典（dict）</h3><p>key.items（） 以列表返回一个视图<br>a.keys（）<br>a.setdefault（key）<br>key.uodate（dict）<br>pop（key） /如果不存在会报错，可以利用keys（）判断是否存在<br>例<br> name=‘alice’<br> if name in d.keys：<br> d.pop（name）<br> print（d）<br> else<br> print（‘{} not in d.format（name））</p>
+<blockquote>
+<p>format用法，使用大括号{},作为特殊字符%<br> 使用方法b.format（a）和format（a，b）<br> 基本用法 </p>
+</blockquote>
+<ol>
+<li>不带编号 即{}</li>
+<li>带数字编号 即 {1}{2}</li>
+<li>带关键字 即{a} {b}</li>
+</ol>
+<p>popitem（）随机返回并删除字典中的最后一对key和值<br>更新dict元素<br>当key不存在时，往dict中正常添加对应元素<br>当key存在时，会更新dict 用新的value替换原来的value<br>get（）返回指定的值 （取值）</p>
+<p>dict查找速度快， python3.5之前dict是无序的， orderddict可以确保有序<br>key不可变，所以tuple可以作为dict的key，但list会报错。</p>
+<h4 id="dict有条件输出"><a href="#dict有条件输出" class="headerlink" title="dict有条件输出"></a>dict有条件输出</h4><ul>
+<li>遍历 dict所有的key，并通过key获得相应value</li>
+<li>通过dict提供的items（）方法，items（）会返回dict所有元素<br>for key，value in d.items（）：<br>  if value &gt;=60<br>   print（key，value）</li>
+</ul>
+<p>获取dict所有的key<br>keys函数，可以返回dict所有的key<br> for key in d.keys（）：</p>
+<h4 id="dict清除所有元素"><a href="#dict清除所有元素" class="headerlink" title="dict清除所有元素"></a>dict清除所有元素</h4><p>dict提供clear（）函数，可以清除dict的所有元素。</p>
 
                 
             </div>
@@ -1180,6 +1197,14 @@ $(function () {
     
 
     <!-- 鼠标星星特效 -->
+     
+        <script type="text/javascript">
+            // 只在桌面版网页启用特效
+            var windowWidth = $(window).width();
+            if (windowWidth > 768) {
+                document.write('<script type="text/javascript" src="/libs/others/star.js"><\/script>');
+            }
+        </script>
     
 
      
