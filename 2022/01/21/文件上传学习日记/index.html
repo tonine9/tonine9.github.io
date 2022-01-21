@@ -4,10 +4,17 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="sql注入简易, tonine">
-    <meta name="description" content="总结1.判断注入点2.猜字段数order by 1 一直换数到出现错误 就是有几个字段union select 1，2，3，4 有几个就写几个
-3.报错输入and 1=2 使得报错 显示回显数  
-4.获得回显数位置   在回显数位置输入参">
+    <meta name="keywords" content="文件上传漏洞之upload-labs, tonine">
+    <meta name="description" content="web漏洞文件上传之后端黑白名单绕过
+文件上传常见验证：
+后缀名、类型、文件头等
+后缀名：黑名单、白名单
+黑名单：明确不允许上传的格式后缀
+ php5
+白名单：明确可以上传的格式后缀
+相对来说更安全，
+文件类型：mime信息，检测文件类型
+">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -19,7 +26,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>sql注入简易 | tonine</title>
+    <title>文件上传漏洞之upload-labs | tonine</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
@@ -311,12 +318,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/10.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/3.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">sql注入简易</h1>
+                    <h1 class="description center-align post-title">文件上传漏洞之upload-labs</h1>
                 </div>
             </div>
         </div>
@@ -432,8 +439,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/%E5%A2%A8%E8%80%85%E5%AE%9E%E4%BE%8B/">
-                                <span class="chip bg-color">墨者实例</span>
+                            <a href="/tags/web%E6%BC%8F%E6%B4%9E/">
+                                <span class="chip bg-color">web漏洞</span>
                             </a>
                         
                     </div>
@@ -448,7 +455,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-12-01
+                    2022-01-21
                 </div>
                 
 
@@ -469,18 +476,126 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><h4 id="1-判断注入点"><a href="#1-判断注入点" class="headerlink" title="1.判断注入点"></a>1.判断注入点</h4><h4 id="2-猜字段数"><a href="#2-猜字段数" class="headerlink" title="2.猜字段数"></a>2.猜字段数</h4><p>order by 1 一直换数到出现错误 就是有几个字段<br>union select 1，2，3，4 有几个就写几个</p>
-<h4 id="3-报错"><a href="#3-报错" class="headerlink" title="3.报错"></a>3.报错</h4><p>输入and 1=2 使得报错 显示回显数  </p>
-<h4 id="4-获得回显数位置"><a href="#4-获得回显数位置" class="headerlink" title="4.获得回显数位置"></a>4.获得回显数位置</h4><p>   在回显数位置输入参数 version（）<br>   回车获得数据库版本 如果是5.0以上 自带一个information-schema的数据库<br>   输入database（）获取数据库名字  输入user（）获得数据库用户</p>
-<h4 id="5-查找表名称"><a href="#5-查找表名称" class="headerlink" title="5.查找表名称"></a>5.查找表名称</h4><p>union select 1，table_name（表名称）,3,4 from information_schema.tables where table_schema=’数据库名字’ limit 0，1</p>
-<p>union select 1，table_name,3,4 from information_schem.tables where table_schema =’数据库名字’ limit 1，1<br>获得表名</p>
-<h4 id="6-查找列名"><a href="#6-查找列名" class="headerlink" title="6.查找列名"></a>6.查找列名</h4><p> union select 1，column_name（列名）,column_type,4 from information_schema.column where table_name=”表名” limit 0，1 更换 1，1    2，2    3，3查出多个列名后 根据列名 获取有用信息</p>
-<h4 id="7-通过获得信息查"><a href="#7-通过获得信息查" class="headerlink" title="7.通过获得信息查"></a>7.通过获得信息查</h4><p>union select 1，（name,’-‘,password,’-‘),3,4 from mozhe_Discuz_StormGroup.StormGroup_member limit 0,1  更换1，1<br>获得两个name和passwrod 利用 cmd5进行 解密</p>
-<h4 id="利用到的语句"><a href="#利用到的语句" class="headerlink" title="利用到的语句"></a>利用到的语句</h4><ul>
-<li>table_schema: 记录数据库名；</li>
-<li>table_name: 记录数据表名；</li>
-<li>column_name： 查列名；</li>
-</ul>
+                <h3 id="web漏洞"><a href="#web漏洞" class="headerlink" title="web漏洞"></a>web漏洞</h3><p><strong>文件上传之后端黑白名单绕过</strong></p>
+<p>文件上传常见验证：</p>
+<p>后缀名、类型、文件头等</p>
+<p><strong>后缀名</strong>：黑名单、白名单</p>
+<p>黑名单：明确不允许上传的格式后缀</p>
+<p> php5</p>
+<p>白名单：明确可以上传的格式后缀</p>
+<p>相对来说更安全，</p>
+<p><strong>文件类型</strong>：mime信息，检测文件类型</p>
+<p>type  是mime的值</p>
+<p><strong>文件头</strong>：内容头信息</p>
+<p>来判定格式，抓包时修改</p>
+<p>$_files[表单名 ] [‘name’ ]</p>
+<p><strong>upload第二关</strong></p>
+<p>源代码分析：</p>
+<p>isset 判定有没有触发 ；</p>
+<p>move-uploaded-file，移动文件</p>
+<p>步骤</p>
+<p>抓包修改mime信息</p>
+<p><strong>upload第三关</strong></p>
+<p>特殊解析后缀</p>
+<p>代码分析：</p>
+<p>isset判断有咩有被触发</p>
+<p>$deny-ext 拒绝的后缀名</p>
+<p><strong>trim函数</strong> php里过滤为空的函数</p>
+<p>将字符串两边的空白字符去除</p>
+<p><strong>deldot</strong> 删除干扰符</p>
+<p><strong>strrchr</strong>（how are you，‘are’）；</p>
+<p>分割 这样结果就是 are you</p>
+<p>第三关这里<strong>strrchr</strong>目的是获取真实后缀格式</p>
+<p>in-array</p>
+<p>判断类型在不在里面，如果不在继续执行</p>
+<p>就是黑名单验证。</p>
+<p>可以上传php其他格式  </p>
+<p>apache服务器能够使php解析为php5、php3</p>
+<p>更改apache的配置文件，添加php3.或其他</p>
+<p>这样就可以被执行，但这取决于对方服务器配置文件中的情况，支持的话就可以。</p>
+<p><strong>upload第四关</strong></p>
+<p><strong>.htaccess解析</strong> 条件：只有apache可以用</p>
+<p>实现解析自定义。</p>
+<p>htaccess文件是Apache服务器中的一个配置文件，它负责相关目录下的网页配置。通过htaccess文件，可以帮我们实现：网页301重定向、自定义404错误页面、改变文件扩展名、允许/阻止特定的用户或者目录的访问、禁止目录列表、配置默认文档等功能。</p>
+<p>上传.htaccess文件更改apache配置</p>
+<p><strong>&lt;filesmatch “ cimer”&gt;</strong> 文件匹配,如果匹配到cimer就按照 要求的执行</p>
+<p>伪静态使用说明，比如php写成的，访问时是一个html页面。</p>
+<p><strong>upload第五关</strong></p>
+<p>代码分析：大小写检测</p>
+<p><strong>upload第六关</strong></p>
+<p>空格绕过</p>
+<p>代码分析：少了一行代码trim（ $file-ext）</p>
+<p>加个空格，格式匹配绕过，但不会对代码文件产生影响，因为系统会自动忽略空格</p>
+<p><strong>upload第七关</strong></p>
+<p>代码分析：少了一行代码</p>
+<p>同上，抓包时，文件后面加.，会自动忽略</p>
+<p><strong>upload第八关</strong></p>
+<p>代码分析：</p>
+<p>少了一行过滤 点</p>
+<p>deldot删除末尾的点 </p>
+<p><strong>upload第九关</strong></p>
+<p>前提 windows 、php</p>
+<p>::$DATA </p>
+<p>会把DATA之后的数据当成文件流处理，不会检测后缀名，且保持：$DATA之前的文件名。</p>
+<p><strong>upload第十关</strong></p>
+<p>少了一行过滤 点 ，再加上过滤空的代码</p>
+<p>就是添加 .空进行绕过</p>
+<p>更改文件名。</p>
+<p><strong>upload第十一关</strong></p>
+<p>代码分析：如果代码将字符串里的php替换为空，只写了一次循环，就可以写成 1.pphphp 绕过</p>
+<p><strong>白名单</strong></p>
+<p><strong>upload第十二关</strong></p>
+<p>php5.3以下</p>
+<p><strong>%00截断</strong>：地址上，</p>
+<p>例如../upload/1.php%0011111.jpg</p>
+<p>实际接收到的是../upload/1.php</p>
+<p>指编码后的%00，</p>
+<p><strong>0x00截断：</strong>文件命名上，</p>
+<p>代码分析：验证命名里有没有多个点，循环+1，</p>
+<p><strong>upload第十二关或者十三</strong></p>
+<p>把%00编码，</p>
+<p><strong>get会自动解码，post要自己手动url编码。</strong></p>
+<p>get会直接自动识别编码值了</p>
+<p><strong>文件上传之内容逻辑数组绕过</strong></p>
+<p><strong>文件头检测</strong> 通过文件头判断是什么格式，可以伪造。</p>
+<p>图像文件信息判断</p>
+<p>逻辑安全=二次渲染</p>
+<p>逻辑安全-条件竞争</p>
+<p><strong>upload第十三关</strong></p>
+<p>到第十六关，都需要配合文件包含漏洞</p>
+<p>图片马 就是将代码写入图片中</p>
+<p>简单来说就是把图片代码和后门代码 写一个图片格式里。</p>
+<p>可以 命令生成 （cmd里图片一句话制作方法：</p>
+<p>copy 1.png /b + shell.php /a webshell.jpg）</p>
+<p> 或者手工输入</p>
+<p>1.上传后门后，复制地址，访问</p>
+<p>利用 文件包含漏洞（运行图片中的后门代码，将图片作为代码执行）</p>
+<p><strong>upload第十四关</strong></p>
+<p><strong>getimagesize</strong>：获取图像大小相关信息的函数，只上传图像才会继续。其实就是验证上传的是不是图片。</p>
+<p><strong>upload第十五关</strong></p>
+<p>前提是文件包含漏洞</p>
+<p><strong>exif_imagetype</strong>：获取图片类型</p>
+<p>只会获取图片里的信息，所以利用图片后门绕过。</p>
+<p><strong>upload第十六关</strong></p>
+<p><strong>imagecreatefrom</strong>：</p>
+<p><strong>upload第十七关</strong></p>
+<p>imagecreatefromjpeg 由文件或url创建一个新图像</p>
+<p>二次渲染，</p>
+<p>如果实战中遇到，缩览图显示，有删除或者保存按钮，</p>
+<p>上传第一次时，已经在对方服务器上了，</p>
+<p>move_uploaded_file移动文件</p>
+<p>rename重命名</p>
+<p>要符合二次渲染</p>
+<p>条件竞争？</p>
+<p>利用系统占用，</p>
+<p>代码分析：不严谨语句是 过滤在第一次文件上传之后。</p>
+<p><strong>upload第二十关</strong></p>
+<p>控制文件名：%00截断，</p>
+<p>文件夹：/.绕过</p>
+<p>内置函数漏洞，文件目录问题</p>
+<p><strong>upload第二十一关</strong></p>
+<p>数组接受+目录命名</p>
+<p>count获取有几个</p>
 
                 
             </div>
@@ -507,7 +622,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://example.com/2021/12/01/sql%E6%B3%A8%E5%85%A5/">http://example.com/2021/12/01/sql%E6%B3%A8%E5%85%A5/</a>
+                    <a href="http://example.com/2022/01/21/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E5%AD%A6%E4%B9%A0%E6%97%A5%E8%AE%B0/">http://example.com/2022/01/21/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E5%AD%A6%E4%B9%A0%E6%97%A5%E8%AE%B0/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -545,8 +660,8 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/%E5%A2%A8%E8%80%85%E5%AE%9E%E4%BE%8B/">
-                                    <span class="chip bg-color">墨者实例</span>
+                                <a href="/tags/web%E6%BC%8F%E6%B4%9E/">
+                                    <span class="chip bg-color">web漏洞</span>
                                 </a>
                             
                         </div>
@@ -718,9 +833,10 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2022/01/21/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E5%AD%A6%E4%B9%A0%E6%97%A5%E8%AE%B0/">
                     <div class="card-image">
@@ -738,9 +854,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-01-21
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-01-21
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -749,6 +865,7 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -767,13 +884,13 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/11/20/markdown%E8%BF%9B%E9%98%B6/">
+                <a href="/2021/12/01/sql%E6%B3%A8%E5%85%A5/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="markdown进阶">
+                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="sql注入简易">
                         
-                        <span class="card-title">markdown进阶</span>
+                        <span class="card-title">sql注入简易</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -784,16 +901,12 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-11-20
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-12-01
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/%E6%A0%87%E8%AE%B0%E8%AF%AD%E8%A8%80/" class="post-category">
-                                    标记语言
-                                </a>
-                            
+                            <i class="fas fa-user fa-fw"></i>
+                            John Doe
                             
                         </span>
                     </div>
@@ -801,8 +914,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/markdown/">
-                        <span class="chip bg-color">markdown</span>
+                    <a href="/tags/%E5%A2%A8%E8%80%85%E5%AE%9E%E4%BE%8B/">
+                        <span class="chip bg-color">墨者实例</span>
                     </a>
                     
                 </div>
